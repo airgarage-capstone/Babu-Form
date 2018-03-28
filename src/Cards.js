@@ -7,13 +7,13 @@ class Cards extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			Spotname: props.Spotname,
-			address: props.address,
-			city: props.city,
-			state: props.state,
-			pricePerMonth: props.pricePerMonth,
-			allowAutoBook: props.allowAutoBook,
-			quantity: props.quantity,
+			Spotname: '',
+			notes: '',
+			restrictions: '',
+			pricePerMonth: '',
+			organizationName: '',
+			allowAutoBook: '',
+			quantity: '',
 			spotPhotopUpload: require('./house-driveway.png')
 
 		}
@@ -21,49 +21,47 @@ class Cards extends Component {
 	
 	render() {
 		return(
-		//<div className="Info">
+		<div className="Info">
 			<div className = 'cards1'>
 				<img src = {this.state.spotPhotopUpload} alt = "house-driveway"/>
-				
-				<div id="block1">
-				<h2>Spot name: </h2>
-				<br1>{this.state.Spotname}</br1>
+				<div>
+				<h2>Location: </h2>
+				<br1>{this.state.Spotname = "Babu"}</br1>
 				</div>
 				
-				<div id="block2">
-				<h2>address: </h2>
-				<br1>{this.state.address}</br1>
+				<div>
+				<h2>Notes: </h2>
+				<br1>{this.state.notes  = "Large Space, shady"}</br1>
 				</div>
 				
-				<div id="block3">
-				<h2>city: </h2>
-				<br1>{this.state.city}</br1>
+				<div>
+				<h2>Restrictions: </h2>
+				<br1>{this.state.restrictions  = "Mondays-Wednesday"}</br1>
 				</div>
 				
-				<div id="block4">
-				<h2>state: </h2>
-				<br1>{this.state.state}</br1>
-				</div>
-				
-				<div id="block5">
+				<div>
 				<h2>Price Per Month: </h2>
-				<br1>{this.state.pricePerMonth  }</br1>
+				<br1>{this.state.pricePerMonth  = "$25"}</br1>
 				</div>
 				
-				
-				<div id="block6">
-				<h2>Auto Book: </h2>
-				<br1>{this.state.allowAutoBook  }</br1>
+				<div>
+				<h2>Organization Name: </h2>
+				<br1>{this.state.organizationName  = "Bob's house"}</br1>
 				</div>
 				
-				<div id="block7">
+				<div>
 				<h2>Quantity: </h2>
-				<br1>{this.state.quantity }</br1>
+				<br1>{this.state.allowAutoBook  = "Yes"}</br1>
+				</div>
+				
+				<div>
+				<h2>Quantity: </h2>
+				<br1>{this.state.quantity  = "2 Cars"}</br1>
 				</div>
 				
 				
 			</div>
-        //</div>    
+        </div>    
 		);
 	}
 	
