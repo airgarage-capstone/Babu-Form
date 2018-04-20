@@ -1,11 +1,20 @@
-.FormTitle {
-    color:#F5A623;
+
+br{
+	
 	
 }
 
-.FormTitle {
-  text-align: center;
-  
+h1
+{
+	font-size: 20px;
+}
+
+.Forms {
+	color:#ffffff;
+	background-color:#fa934c;
+	width:300px;
+	text-align: center;
+	margin: auto;
 }
 
 body {

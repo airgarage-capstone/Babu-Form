@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import axios from 'axios';
 import './Info.css';
+import 'react-day-picker/lib/style.css';
 
 /*
 			<br />
@@ -24,7 +26,10 @@ class Info extends Component {
 			LastName:  '',
 			email: '',
 			password: '',
-			profile: ''
+			profile: '',
+			phone: '',
+			dob: '',
+			accountType: ''
 			
 	}
 
@@ -37,23 +42,38 @@ class Info extends Component {
 	}
 	
 	handleSubmit(event) {
+		
+		event.preventDefault();
 	
-	alert(
-	'FirstName was entered: ' + this.state.FirstName + 
-	'\nLastName was entered: ' + this.state.LastName +
-	'\nEmail was entered: ' + this.state.email +
-	'\nPassword was entered: ' + this.state.password +
-	'\nProfile was entered: ' + this.state.profile
-	);
+		const user = {
+			first_name: this.state.FirstName,
+			last_name: this.state.LastName,
+			username: this.state.email,
+			password: this.state.password,
+			accountType: this.state.accountType,
+			phone: this.state.phone,
+			dob:this.state.dob
+		}
+		
+		axios.post('http://staging.airgara.ge/api/register/', user)
+	.then(res => { 
+
+	alert("Welcome to AirGarage " + res.data.FirstName + " " + res.data.LastName);
+	})
 	
-    event.preventDefault();
-	console.log(this.state);
+	.catch(error =>{
+	
+	console.log(error)
+	
+	})
+	
 	}
-   
+	
 	static defaultProps = {
 		categories: ['Find Parking', 'List a spot', 'Both']
 	}
   
+
 	render() {
 		
 		let categoryOptions = this.props.categories.map(category => {
@@ -61,7 +81,6 @@ class Info extends Component {
 		});
 		
 		
-	
         return (
             <div className="Info">
 				<h1>Welcome To AirGarage</h1>
@@ -118,24 +137,40 @@ class Info extends Component {
 					</label>
 					<br />
 					
-                    <label>Profile: {' '} </label><br />
+					
+					<label>Phone: {' '} </label><br />
                          <label>
                          <input 
 						 type="text" 
-						 name="profile" 
-						 value = {this.state.profile}
+						 name="phone" 
+						 value = {this.state.phone}
 						 onChange = {this.handleChange}
 						 />
 						 <br />
 					</label>
 					
-					<label>
+					<label>Data Of Birth: {' '} </label><br />
+                         <label>
+                         <input 
+						 type="text" 
+						 name="dob" 
+						 value = {this.state.dob}
+						 onChange = {this.handleChange}
+						 />
+						 <br />
+					</label>
+					
 					<br />
-						Account Type: </label><br />
-							<select ref="category">
-							{categoryOptions}
-							</select>
-				<br />
+                    <label>
+                            <select name="accountType" onChange={this.handleChange}>
+                            <option value="" selected disabled>Pick Account Type</option>
+                            <option value="Find parking">Find Parking</option>
+                            <option  value="List a spot">List a Spot</option>
+                            <option  value="Both">Both</option>
+                        </select>
+                    </label> <br />  <br />
+					
+					
 					<label>
 					<br />
 						Submit:

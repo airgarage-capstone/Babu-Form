@@ -35,7 +35,7 @@ class Form extends Component {
 	render() {
 		
         return (
-            <div className="Info">
+            <div className="Forms">
 				<h1>Welcome To AirGarage</h1>
                 <h1>Login Form</h1>
 				
