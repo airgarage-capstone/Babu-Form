@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './Form.css';
+
 
 class Form extends Component {
    
@@ -21,6 +23,9 @@ class Form extends Component {
 	}
 	
 	handleSubmit(event) {
+		
+	console.log(this.state);
+    event.preventDefault();
 	
 	alert(
 	'Email was entered: ' + this.state.email +
@@ -29,6 +34,19 @@ class Form extends Component {
 	
     event.preventDefault();
 	console.log(this.state);
+	
+	
+	    const user = {
+			username: this.state.email,
+			password: this.state.password
+		}
+
+		axios.post('http://staging.airgara.ge/api/auth/', user)
+		.then(res => {
+				alert('Logged in')
+			})
+	
+	
 	}
    
   
